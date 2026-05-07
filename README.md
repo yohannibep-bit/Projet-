@@ -1,345 +1,636 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Trophy, Gift, Dumbbell, Bike, Star, Medal, Smartphone, Users, ShieldCheck } from "lucide-react";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulse Club</title>
 
-export default function PulseClubWebsite() {
-  return (
-    <div className="bg-black text-white min-h-screen font-sans">
-      {/* HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-black via-zinc-900 to-lime-500 py-20 px-8 lg:px-20">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-6xl font-extrabold leading-tight mb-6">
-              PULSE <span className="text-lime-400">CLUB</span>
-            </h1>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-            <p className="text-2xl text-zinc-300 mb-8 leading-relaxed">
-              Le programme sportif qui récompense votre passion.
-              Bougez plus, gagnez plus.
-            </p>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-            <div className="flex gap-4 flex-wrap">
-              <Button className="bg-lime-400 hover:bg-lime-500 text-black text-lg px-8 py-6 rounded-2xl font-bold">
-                Rejoindre le club
-              </Button>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: white;
+    }
 
-              <Button
-                variant="outline"
-                className="border-lime-400 text-lime-400 hover:bg-lime-400 hover:text-black text-lg px-8 py-6 rounded-2xl"
-              >
-                Découvrir
-              </Button>
-            </div>
-          </motion.div>
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0,0,0,0.95);
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid #b7ff00;
+    }
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <div className="bg-zinc-900 p-8 rounded-[40px] border border-lime-400 shadow-2xl">
-              <div className="bg-black rounded-3xl p-8">
-                <h2 className="text-3xl font-bold mb-6 text-lime-400">
-                  Vos récompenses
-                </h2>
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #b7ff00;
+    }
 
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between bg-zinc-800 p-4 rounded-2xl">
-                    <div className="flex items-center gap-3">
-                      <Gift className="text-lime-400" />
-                      <span>Points actuels</span>
-                    </div>
-                    <span className="font-bold text-2xl">12 450</span>
-                  </div>
+    .logo span {
+      color: white;
+    }
 
-                  <div className="flex items-center justify-between bg-zinc-800 p-4 rounded-2xl">
-                    <div className="flex items-center gap-3">
-                      <Medal className="text-yellow-400" />
-                      <span>Niveau</span>
-                    </div>
-                    <span className="font-bold text-2xl text-yellow-400">GOLD</span>
-                  </div>
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
 
-                  <div className="w-full bg-zinc-700 rounded-full h-4 overflow-hidden">
-                    <div className="bg-lime-400 h-full w-[78%] rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+    nav a:hover {
+      color: #b7ff00;
+    }
 
-      {/* NAVIGATION */}
-      <section className="sticky top-0 z-50 bg-black border-b border-zinc-800">
-        <div className="flex justify-center gap-10 py-5 text-lg font-semibold">
-          <a href="#accueil" className="hover:text-lime-400 transition">Accueil</a>
-          <a href="#recompenses" className="hover:text-lime-400 transition">Récompenses</a>
-          <a href="#activites" className="hover:text-lime-400 transition">Activités</a>
-          <a href="#contact" className="hover:text-lime-400 transition">Contact</a>
-        </div>
-      </section>
+    section {
+      padding: 120px 8% 80px;
+    }
 
-      {/* PAGE 1 */}
-      <section id="accueil" className="py-24 px-8 lg:px-20 bg-zinc-950">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-extrabold mb-6">
-            Comment ça <span className="text-lime-400">fonctionne</span> ?
-          </h2>
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 60px;
+      background: linear-gradient(to right, #000000, #111111, #b7ff00);
+    }
 
-          <p className="text-zinc-400 text-xl max-w-3xl mx-auto leading-relaxed">
-            Achetez, bougez, cumulez des points et débloquez des avantages exclusifs.
-            Chaque activité sportive vous rapproche de nouvelles récompenses.
-          </p>
-        </div>
+    .hero-text {
+      width: 50%;
+    }
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <Card className="bg-zinc-900 border border-zinc-800 rounded-3xl">
-            <CardContent className="p-8">
-              <Dumbbell className="w-14 h-14 text-lime-400 mb-6" />
-              <h3 className="text-3xl font-bold mb-4">Bougez</h3>
-              <p className="text-zinc-400 leading-relaxed">
-                Courez, faites du vélo, allez à la salle ou participez à des défis sportifs.
-              </p>
-            </CardContent>
-          </Card>
+    .hero-text h1 {
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 25px;
+    }
 
-          <Card className="bg-zinc-900 border border-zinc-800 rounded-3xl">
-            <CardContent className="p-8">
-              <Gift className="w-14 h-14 text-lime-400 mb-6" />
-              <h3 className="text-3xl font-bold mb-4">Gagnez</h3>
-              <p className="text-zinc-400 leading-relaxed">
-                Cumulez des points à chaque achat et activité physique réalisée.
-              </p>
-            </CardContent>
-          </Card>
+    .hero-text h1 span {
+      color: #b7ff00;
+    }
 
-          <Card className="bg-zinc-900 border border-zinc-800 rounded-3xl">
-            <CardContent className="p-8">
-              <Trophy className="w-14 h-14 text-lime-400 mb-6" />
-              <h3 className="text-3xl font-bold mb-4">Profitez</h3>
-              <p className="text-zinc-400 leading-relaxed">
-                Échangez vos points contre des produits, événements VIP et coaching.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+    .hero-text p {
+      font-size: 1.3rem;
+      color: #ddd;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
 
-      {/* PAGE 2 */}
-      <section id="recompenses" className="py-24 px-8 lg:px-20 bg-black">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-extrabold mb-6">
-            Les niveaux <span className="text-lime-400">VIP</span>
-          </h2>
+    .buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-          <p className="text-zinc-400 text-xl">
-            Plus vous êtes actif, plus vos récompenses deviennent exclusives.
-          </p>
-        </div>
+    .btn {
+      padding: 16px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+      display: inline-block;
+    }
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          <Card className="bg-gradient-to-b from-amber-700 to-zinc-900 rounded-3xl border-none shadow-2xl">
-            <CardContent className="p-10">
-              <h3 className="text-4xl font-extrabold mb-6">BRONZE</h3>
-              <ul className="space-y-4 text-lg text-zinc-200">
-                <li>✔ Promotions exclusives</li>
-                <li>✔ Accès aux ventes privées</li>
-                <li>✔ Cadeau d'anniversaire</li>
-                <li>✔ Réductions sportives</li>
-              </ul>
-            </CardContent>
-          </Card>
+    .btn-primary {
+      background: #b7ff00;
+      color: black;
+    }
 
-          <Card className="bg-gradient-to-b from-zinc-400 to-zinc-900 rounded-3xl border-none shadow-2xl scale-105">
-            <CardContent className="p-10">
-              <h3 className="text-4xl font-extrabold mb-6">SILVER</h3>
-              <ul className="space-y-4 text-lg text-zinc-200">
-                <li>✔ Livraison offerte</li>
-                <li>✔ Réductions personnalisées</li>
-                <li>✔ Retours prolongés</li>
-                <li>✔ Coaching en ligne</li>
-              </ul>
-            </CardContent>
-          </Card>
+    .btn-primary:hover {
+      background: white;
+    }
 
-          <Card className="bg-gradient-to-b from-yellow-500 to-zinc-900 rounded-3xl border-none shadow-2xl">
-            <CardContent className="p-10">
-              <h3 className="text-4xl font-extrabold mb-6">GOLD</h3>
-              <ul className="space-y-4 text-lg text-zinc-200">
-                <li>✔ Invitations VIP</li>
-                <li>✔ Service client prioritaire</li>
-                <li>✔ Produits exclusifs</li>
-                <li>✔ Accès anticipé aux collections</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+    .btn-secondary {
+      border: 2px solid #b7ff00;
+      color: #b7ff00;
+    }
 
-      {/* PAGE 3 */}
-      <section id="activites" className="py-24 px-8 lg:px-20 bg-zinc-950">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-extrabold mb-6">
-            Activités & <span className="text-lime-400">Points</span>
-          </h2>
+    .btn-secondary:hover {
+      background: #b7ff00;
+      color: black;
+    }
 
-          <p className="text-zinc-400 text-xl">
-            Chaque action vous rapporte des points et des récompenses.
-          </p>
-        </div>
+    .card-points {
+      width: 400px;
+      background: #111;
+      border-radius: 30px;
+      padding: 40px;
+      border: 2px solid #b7ff00;
+      box-shadow: 0 0 40px rgba(183,255,0,0.3);
+    }
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          <Card className="bg-zinc-900 rounded-3xl border border-zinc-800">
-            <CardContent className="p-10 space-y-6">
-              <div className="flex items-center justify-between text-xl">
-                <div className="flex items-center gap-4">
-                  <Bike className="text-lime-400" />
-                  <span>Sortie vélo</span>
-                </div>
-                <span className="font-bold">+100 pts</span>
-              </div>
+    .card-points h2 {
+      color: #b7ff00;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
 
-              <div className="flex items-center justify-between text-xl">
-                <div className="flex items-center gap-4">
-                  <Dumbbell className="text-lime-400" />
-                  <span>Séance fitness</span>
-                </div>
-                <span className="font-bold">+80 pts</span>
-              </div>
+    .point-box {
+      background: #1b1b1b;
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-              <div className="flex items-center justify-between text-xl">
-                <div className="flex items-center gap-4">
-                  <Star className="text-lime-400" />
-                  <span>Défi sportif</span>
-                </div>
-                <span className="font-bold">+150 pts</span>
-              </div>
-            </CardContent>
-          </Card>
+    .point-box strong {
+      font-size: 1.6rem;
+    }
 
-          <Card className="bg-lime-400 text-black rounded-3xl border-none shadow-2xl">
-            <CardContent className="p-10">
-              <h3 className="text-4xl font-extrabold mb-8">
-                Bonus écologiques
-              </h3>
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
 
-              <div className="space-y-6 text-xl font-semibold">
-                <div className="flex justify-between">
-                  <span>Recycler vos produits</span>
-                  <span>+300 pts</span>
-                </div>
+    .section-title h2 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
 
-                <div className="flex justify-between">
-                  <span>Achat responsable</span>
-                  <span>x2 pts</span>
-                </div>
+    .section-title span {
+      color: #b7ff00;
+    }
 
-                <div className="flex justify-between">
-                  <span>Livraison verte</span>
-                  <span>+100 pts</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+    .section-title p {
+      color: #aaa;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
 
-      {/* APPLICATION SECTION */}
-      <section className="py-24 px-8 lg:px-20 bg-black">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-5xl font-extrabold mb-8 leading-tight">
-              Votre passion mérite <span className="text-lime-400">PLUS</span>
-            </h2>
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
 
-            <p className="text-zinc-400 text-xl leading-relaxed mb-8">
-              Rejoignez une communauté de sportifs passionnés et profitez d'une
-              expérience premium avec des défis, récompenses et événements exclusifs.
-            </p>
+    .card {
+      background: #111;
+      border-radius: 25px;
+      padding: 40px;
+      transition: 0.3s;
+      border: 1px solid #222;
+    }
 
-            <div className="flex gap-6 flex-wrap">
-              <Button className="bg-lime-400 hover:bg-lime-500 text-black px-8 py-6 rounded-2xl text-lg font-bold">
-                Télécharger l'application
-              </Button>
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #b7ff00;
+    }
 
-              <Button
-                variant="outline"
-                className="border-lime-400 text-lime-400 hover:bg-lime-400 hover:text-black px-8 py-6 rounded-2xl text-lg"
-              >
-                Voir les défis
-              </Button>
-            </div>
-          </div>
+    .card h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #b7ff00;
+    }
 
-          <div className="grid grid-cols-2 gap-6">
-            <Card className="bg-zinc-900 rounded-3xl border border-zinc-800">
-              <CardContent className="p-8 text-center">
-                <Users className="w-14 h-14 mx-auto mb-6 text-lime-400" />
-                <h3 className="text-2xl font-bold mb-3">Communauté</h3>
-                <p className="text-zinc-400">Des milliers de sportifs connectés.</p>
-              </CardContent>
-            </Card>
+    .card p,
+    .card li {
+      color: #ccc;
+      line-height: 1.8;
+    }
 
-            <Card className="bg-zinc-900 rounded-3xl border border-zinc-800">
-              <CardContent className="p-8 text-center">
-                <Smartphone className="w-14 h-14 mx-auto mb-6 text-lime-400" />
-                <h3 className="text-2xl font-bold mb-3">Application</h3>
-                <p className="text-zinc-400">Suivez vos points en temps réel.</p>
-              </CardContent>
-            </Card>
+    .levels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
 
-            <Card className="bg-zinc-900 rounded-3xl border border-zinc-800">
-              <CardContent className="p-8 text-center">
-                <ShieldCheck className="w-14 h-14 mx-auto mb-6 text-lime-400" />
-                <h3 className="text-2xl font-bold mb-3">Sécurité</h3>
-                <p className="text-zinc-400">Vos données protégées et sécurisées.</p>
-              </CardContent>
-            </Card>
+    .level {
+      border-radius: 30px;
+      padding: 45px;
+      color: white;
+    }
 
-            <Card className="bg-zinc-900 rounded-3xl border border-zinc-800">
-              <CardContent className="p-8 text-center">
-                <Trophy className="w-14 h-14 mx-auto mb-6 text-lime-400" />
-                <h3 className="text-2xl font-bold mb-3">Challenges</h3>
-                <p className="text-zinc-400">Des défis sportifs chaque semaine.</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+    .bronze {
+      background: linear-gradient(to bottom, #b87333, #111);
+    }
 
-      {/* FOOTER */}
-      <footer id="contact" className="bg-lime-400 text-black py-10 px-8 lg:px-20">
-        <div className="grid lg:grid-cols-3 gap-8 items-center">
-          <div>
-            <h3 className="text-4xl font-extrabold mb-3">PULSE CLUB</h3>
-            <p className="text-lg font-medium">
-              Bien plus qu'un programme de fidélité sportif.
-            </p>
-          </div>
+    .silver {
+      background: linear-gradient(to bottom, #9e9e9e, #111);
+    }
 
-          <div className="text-center">
-            <p className="text-xl font-bold">contact@pulseclub.fr</p>
-            <p className="text-lg">www.pulseclub.fr</p>
-          </div>
+    .gold {
+      background: linear-gradient(to bottom, #ffd700, #111);
+    }
 
-          <div className="flex justify-end gap-4">
-            <Button className="bg-black text-lime-400 hover:bg-zinc-900 rounded-2xl px-6 py-5">
-              Instagram
-            </Button>
+    .level h3 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
 
-            <Button className="bg-black text-lime-400 hover:bg-zinc-900 rounded-2xl px-6 py-5">
-              TikTok
-            </Button>
-          </div>
-        </div>
-      </footer>
+    .level ul {
+      list-style: none;
+    }
+
+    .level ul li {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .activity-card {
+      background: #111;
+      border-radius: 25px;
+      padding: 40px;
+    }
+
+    .activity {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #222;
+      font-size: 1.1rem;
+    }
+
+    .bonus {
+      background: #b7ff00;
+      color: black;
+    }
+
+    .bonus h3 {
+      color: black;
+    }
+
+    .app-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 50px;
+      align-items: center;
+    }
+
+    .app-text h2 {
+      font-size: 4rem;
+      margin-bottom: 30px;
+    }
+
+    .app-text h2 span {
+      color: #b7ff00;
+    }
+
+    .app-text p {
+      color: #bbb;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .feature-box {
+      background: #111;
+      padding: 35px;
+      border-radius: 25px;
+      text-align: center;
+      border: 1px solid #222;
+    }
+
+    .feature-box h4 {
+      margin: 20px 0;
+      color: #b7ff00;
+      font-size: 1.5rem;
+    }
+
+    footer {
+      background: #b7ff00;
+      color: black;
+      padding: 60px 8%;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .footer-content h3 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .socials a {
+      display: inline-block;
+      margin-left: 15px;
+      text-decoration: none;
+      color: white;
+      background: black;
+      padding: 12px 25px;
+      border-radius: 40px;
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      background: #222;
+    }
+
+    @media(max-width: 1000px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text {
+        width: 100%;
+      }
+
+      .card-points {
+        width: 100%;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero-text h1 {
+        font-size: 3.5rem;
+      }
+
+      .section-title h2,
+      .app-text h2 {
+        font-size: 2.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">PULSE <span>CLUB</span></div>
+
+    <nav>
+      <a href="#home">Accueil</a>
+      <a href="#services">Services</a>
+      <a href="#rewards">Récompenses</a>
+      <a href="#activities">Activités</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>BOUGEZ PLUS <span>GAGNEZ PLUS</span></h1>
+
+      <p>
+        Le programme sportif nouvelle génération.
+        Cumulez des points à chaque activité,
+        débloquez des récompenses exclusives et rejoignez
+        une communauté de passionnés.
+      </p>
+
+      <div class="buttons">
+        <a href="#" class="btn btn-primary">Rejoindre</a>
+        <a href="#services" class="btn btn-secondary">Découvrir</a>
+      </div>
     </div>
-  );
-}
+
+    <div class="card-points">
+      <h2>Vos Récompenses</h2>
+
+      <div class="point-box">
+        <span>Points</span>
+        <strong>12 450</strong>
+      </div>
+
+      <div class="point-box">
+        <span>Niveau</span>
+        <strong>GOLD</strong>
+      </div>
+
+      <div class="point-box">
+        <span>Objectif</span>
+        <strong>15 000</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-title">
+      <h2>Comment ça <span>fonctionne</span> ?</h2>
+
+      <p>
+        Faites du sport, gagnez des points et profitez de récompenses exclusives.
+        Une expérience premium pensée pour tous les sportifs.
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Achetez</h3>
+        <p>
+          Achetez des équipements sportifs et cumulez automatiquement des points fidélité.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Bougez</h3>
+        <p>
+          Courez, pédalez, entraînez-vous et transformez vos performances en récompenses.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Profitez</h3>
+        <p>
+          Échangez vos points contre des réductions, événements VIP et cadeaux exclusifs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REWARDS -->
+  <section id="rewards">
+    <div class="section-title">
+      <h2>Les niveaux <span>VIP</span></h2>
+
+      <p>
+        Plus vous êtes actif, plus vous débloquez des avantages premium.
+      </p>
+    </div>
+
+    <div class="levels">
+      <div class="level bronze">
+        <h3>BRONZE</h3>
+
+        <ul>
+          <li>✔ Promotions exclusives</li>
+          <li>✔ Accès ventes privées</li>
+          <li>✔ Cadeau anniversaire</li>
+          <li>✔ Réductions sportives</li>
+        </ul>
+      </div>
+
+      <div class="level silver">
+        <h3>SILVER</h3>
+
+        <ul>
+          <li>✔ Livraison gratuite</li>
+          <li>✔ Coaching personnalisé</li>
+          <li>✔ Réductions premium</li>
+          <li>✔ Accès anticipé</li>
+        </ul>
+      </div>
+
+      <div class="level gold">
+        <h3>GOLD</h3>
+
+        <ul>
+          <li>✔ Invitations VIP</li>
+          <li>✔ Produits exclusifs</li>
+          <li>✔ Service prioritaire</li>
+          <li>✔ Événements privés</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES -->
+  <section id="activities">
+    <div class="section-title">
+      <h2>Activités & <span>Points</span></h2>
+
+      <p>
+        Chaque activité sportive vous rapporte des récompenses.
+      </p>
+    </div>
+
+    <div class="activity-grid">
+      <div class="activity-card">
+        <div class="activity">
+          <span>🏃 Running</span>
+          <strong>+80 pts</strong>
+        </div>
+
+        <div class="activity">
+          <span>🚴 Vélo</span>
+          <strong>+100 pts</strong>
+        </div>
+
+        <div class="activity">
+          <span>🏋 Fitness</span>
+          <strong>+90 pts</strong>
+        </div>
+
+        <div class="activity">
+          <span>🏆 Challenge</span>
+          <strong>+150 pts</strong>
+        </div>
+      </div>
+
+      <div class="activity-card bonus">
+        <h3>Bonus Écologiques</h3>
+
+        <div class="activity">
+          <span>♻ Recycler vos produits</span>
+          <strong>+300 pts</strong>
+        </div>
+
+        <div class="activity">
+          <span>🌱 Achat responsable</span>
+          <strong>x2 pts</strong>
+        </div>
+
+        <div class="activity">
+          <span>🚚 Livraison verte</span>
+          <strong>+100 pts</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP SECTION -->
+  <section>
+    <div class="app-section">
+      <div class="app-text">
+        <h2>Votre passion mérite <span>PLUS</span></h2>
+
+        <p>
+          Rejoignez des milliers de sportifs passionnés.
+          Suivez vos performances, participez à des défis,
+          gagnez des récompenses et profitez d'une expérience unique.
+        </p>
+
+        <div class="buttons">
+          <a href="#" class="btn btn-primary">Télécharger</a>
+          <a href="#" class="btn btn-secondary">Voir les défis</a>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature-box">
+          <h4>Communauté</h4>
+          <p>Des milliers de sportifs connectés.</p>
+        </div>
+
+        <div class="feature-box">
+          <h4>Application</h4>
+          <p>Suivi des points en temps réel.</p>
+        </div>
+
+        <div class="feature-box">
+          <h4>Challenges</h4>
+          <p>Défis sportifs chaque semaine.</p>
+        </div>
+
+        <div class="feature-box">
+          <h4>Récompenses</h4>
+          <p>Des cadeaux exclusifs toute l'année.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div>
+        <h3>PULSE CLUB</h3>
+        <p>Bien plus qu'un programme sportif.</p>
+      </div>
+
+      <div>
+        <p><strong>Email :</strong> contact@pulseclub.fr</p>
+        <p><strong>Site :</strong> www.pulseclub.fr</p>
+      </div>
+
+      <div class="socials">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
