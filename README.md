@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INTERGOSPORT - Expérience Fidélité</title>
+  <title>INTERGOSPORT - Programme Fidélité</title>
+
   <style>
     * {
       margin: 0;
@@ -13,7 +14,7 @@
     }
 
     body {
-      background: linear-gradient(135deg, #0b1220, #1e40af);
+      background: linear-gradient(135deg, #0b1220, #1e3a8a);
       color: white;
     }
 
@@ -24,14 +25,14 @@
     }
 
     header h1 {
-      font-size: 45px;
+      font-size: 40px;
       color: #22c55e;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
     }
 
     header p {
       margin-top: 10px;
-      font-size: 18px;
+      font-size: 16px;
       color: #e5e7eb;
     }
 
@@ -57,11 +58,11 @@
 
     .hero {
       text-align: center;
-      padding: 60px 20px;
+      padding: 50px 20px;
     }
 
     .hero h2 {
-      font-size: 32px;
+      font-size: 28px;
       color: #facc15;
       margin-bottom: 10px;
     }
@@ -69,8 +70,8 @@
     .hero p {
       max-width: 800px;
       margin: auto;
+      font-size: 15px;
       color: #e5e7eb;
-      font-size: 16px;
       line-height: 1.5;
     }
 
@@ -80,31 +81,20 @@
       padding: 20px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
     .card {
       background: rgba(255,255,255,0.1);
       padding: 20px;
       border-radius: 15px;
+      margin-bottom: 20px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
-    .card h3 {
-      margin-bottom: 10px;
-      color: #22c55e;
-    }
-
     .points {
-      font-size: 40px;
-      text-align: center;
-      color: #22c55e;
-      margin: 20px 0;
+      font-size: 42px;
       font-weight: bold;
+      color: #22c55e;
+      text-align: center;
+      margin: 15px 0;
     }
 
     button {
@@ -114,21 +104,24 @@
       cursor: pointer;
       margin: 5px;
       font-weight: bold;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
     }
 
     .btn-blue { background: #3b82f6; color: white; }
-    .btn-green { background: #22c55e; color: black; }
     .btn-red { background: #ef4444; color: white; }
-
-    button:hover { transform: scale(1.05); }
+    .btn-green { background: #22c55e; color: black; }
 
     ul {
       margin-top: 10px;
       padding-left: 20px;
     }
 
-    .section {
-      margin-top: 50px;
+    li {
+      margin-bottom: 6px;
     }
 
     .promo {
@@ -136,20 +129,19 @@
       padding: 20px;
       border-radius: 15px;
       text-align: center;
-      margin-top: 30px;
+      margin-top: 20px;
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      color: #cbd5e1;
       font-size: 12px;
-      margin-top: 40px;
+      color: #cbd5e1;
     }
 
     @media (max-width: 600px) {
-      header h1 { font-size: 30px; }
-      .hero h2 { font-size: 24px; }
+      header h1 { font-size: 28px; }
+      .hero h2 { font-size: 22px; }
     }
   </style>
 </head>
@@ -157,101 +149,38 @@
 
 <header>
   <h1>INTERGOSPORT</h1>
-  <p>Le programme fidélité nouvelle génération</p>
+  <p>Programme de fidélité officiel - Gagnez des récompenses sportives</p>
 </header>
 
 <nav>
   <a href="#accueil">Accueil</a>
   <a href="#points">Points</a>
   <a href="#recompenses">Récompenses</a>
-  <a href="#promo">Promotions</a>
+  <a href="#promo">Promo</a>
 </nav>
 
 <section class="hero" id="accueil">
-  <h2>🏆 Gagnez, achetez, soyez récompensé !</h2>
+  <h2>🏆 Achetez, cumulez, gagnez !</h2>
   <p>
-    INTERGOSPORT vous propose un programme de fidélité simple et puissant.
-    Cumulez des points à chaque achat et profitez d’avantages exclusifs en magasin.
+    Avec INTERGOSPORT, chaque achat vous rapproche de récompenses exclusives.
+    Transformez vos achats en avantages sportifs.
   </p>
 </section>
 
 <div class="container">
 
-  <div class="section" id="points">
-    <div class="card">
-      <h3>💳 Votre cagnotte</h3>
-      <div class="points" id="pointsDisplay">0</div>
+  <div class="card" id="points">
+    <h3>💳 Votre cagnotte</h3>
+    <div class="points" id="pointsDisplay">0 points</div>
 
-      <div style="text-align:center;">
-        <button class="btn-blue" onclick="addPurchase()">Ajouter achat</button>
-        <button class="btn-red" onclick="resetPoints()">Reset</button>
-      </div>
+    <div style="text-align:center;">
+      <button class="btn-blue" onclick="addPurchase()">Ajouter achat</button>
+      <button class="btn-red" onclick="resetPoints()">Réinitialiser</button>
     </div>
   </div>
 
-  <div class="section" id="recompenses">
-    <div class="grid">
-      <div class="card">
-        <h3>🎁 Récompenses</h3>
-        <ul>
-          <li>200 pts : -10%</li>
-          <li>500 pts : 20€ bon d’achat</li>
-          <li>1000 pts : équipement sport</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>🔥 Bonus</h3>
-        <ul>
-          <li>Achats produits sportifs = x2 points</li>
-          <li>Parrainage = +100 points</li>
-          <li>Événements = cadeaux exclusifs</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>📱 Avantages</h3>
-        <ul>
-          <li>Offres personnalisées</li>
-          <li>Notifications promos</li>
-          <li>Accès ventes privées</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="section promo" id="promo">
-    <h2>⚡ OFFRE DU MOMENT</h2>
-    <p>Doublez vos points sur toute la collection running cette semaine !</p>
-  </div>
-
-</div>
-
-<footer>
-  © INTERGOSPORT - Site officiel fidélité
-</footer>
-
-<script>
-  let points = 0;
-
-  function addPurchase() {
-    let val = prompt("Montant achat (€):");
-    val = parseInt(val);
-    if (!isNaN(val)) {
-      points += val;
-      update();
-    }
-  }
-
-  function resetPoints() {
-    points = 0;
-    update();
-  }
-
-  function update() {
-    document.getElementById("pointsDisplay").innerText = points;
-  }
-</script>
-
-</body>
-</html>
+  <div class="card" id="recompenses">
+    <h3>🎁 Récompenses</h3>
+    <ul>
+      <li>200 points : -10% sur un achat</li>
+      <
